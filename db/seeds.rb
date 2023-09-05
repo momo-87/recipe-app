@@ -29,10 +29,8 @@ for user_position in 0..(quantity_users - 1) do
   for recipe_position in 0..Random.rand(quantity_recipes - 1) do
     temp_recipe = Recipe.create!(user: users[user_position], name: "Recipe #{recipe_position + 1}", preparation_time: "#{Faker::Number.within(range: 10..60)} minutes", cooking_time: "#{Faker::Number.within(range: 10..60)} minutes", description: Faker::Lorem.sentences(number: 2 + Random.rand(10)).join(' '))
     for recipe_foods_position in 0..Random.rand(quantity_recipe_foods - 1) do
-      for food_position in 0..Random.rand(quantity_foods - 1) do
-        temp_food = Food.create!(user: users[user_position], name: "Food #{food_position + 1}", measurement_unit: "unit", price: "$#{Faker::Commerce.price(range: 0..100.0, as_string: false)}", quantity: Faker::Number.between(from: 1, to: 20))
-        RecipeFood.create!(recipe: temp_recipe, food: temp_food, quantity: Faker::Number.between(from: 1, to: 20))
-      end
+      temp_food = Food.create!(user: users[user_position], name: "Food #{rand(1..quantity_foods)}", measurement_unit: "unit", price: Faker::Number.between(from: 1, to: 100), quantity: Faker::Number.between(from: 1, to: 20))
+      RecipeFood.create!(recipe: temp_recipe, food: temp_food, quantity: Faker::Number.between(from: 1, to: 20))
     end
   end
 end
