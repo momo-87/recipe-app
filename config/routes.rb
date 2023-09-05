@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :users do
-    resources :recipes, only [:index, :show] do
+    resources :recipes, only: [:index, :show] do
       resources :recipe_foods
     end
   end
