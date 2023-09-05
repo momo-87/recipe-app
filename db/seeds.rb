@@ -27,18 +27,17 @@ end
 
 for user_position in 0..(quantity_users - 1) do
   for recipe_position in 0..Random.rand(quantity_recipes - 1) do
-    temp_recipe = Recipe.create!(user: users[user_position], name: "Recipe #{recipe_position + 1}", cooking_time = Faker::Number.within(range: 10..120).to_s + ' ' + Faker::Measurement.metric('minute'), description: Faker::Lorem.sentences(number: 2 + Random.rand(10)).join(' '))
-    for comment_position in 0..Random.rand(quantity_comments) do
-      position = Random.rand(quantity_users)
-      Comment.create!(post: temp_post, author: users[Random.rand(quantity_users)], text: Faker::Lorem.sentences(number: 12 + Random.rand(20)).join(' '))
-    end
-    for like in 1..Random.rand(quantity_likes) do
-      Like.create!(post: temp_post, author: users[Random.rand(quantity_users)])
+    temp_recipe = Recipe.create!(user: users[user_position], name: "Recipe #{recipe_position + 1}", preparation_time = "#{Faker::Number.within(range: 10..60)} minutes", cooking_time = "#{Faker::Number.within(range: 10..60)} minutes", description: Faker::Lorem.sentences(number: 2 + Random.rand(10)).join(' '))
+    for recipe_foods_position in 0..Random.rand(quantity_recipe_foods - 1) do
+      for food_position in 0..Random.rand(quantity_foods - 1) do
+        temp_food = Food.create!(name: "Food #{food_position + 1}", measurement_unit: "unit", price: "$#{Faker::Commerce.price(range: 0..100.0, as_string: false)}", quantity: Faker::Number.between(from: 1, to: 20))
+        RecipeFood.create!(recipe: temp_recipe, food: temp_food, quantity: Faker::Number.between(from: 1, to: 20))
+      end
     end
   end
 end
 
 puts "Created #{User.count} users"
-puts "Created #{Post.count} posts"
-puts "Created #{Comment.count} comments"
-puts "Assigned #{Like.count} likes, randomly"
+puts "Created #{Recipe.count} recipes"
+puts "Created #{Food.count} foods"
+puts "Assigned #{RecipeFood.count} recipe_foods, randomly"
