@@ -22,6 +22,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  def public_recipes
+    @users = User.all
+    @foods = Food.all
+    @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true)
+  end
+
   private
 
   def recipe_params
