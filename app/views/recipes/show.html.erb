@@ -1,8 +1,18 @@
-<div class="w-full flex flex-col gap-5 pl-[3%] pr-[3%] md:w-[50%] mx-auto pt-5">
+<div class="w-full flex flex-col gap-5 pl-[3%] pr-[3%] md:w-[60%] mx-auto pt-5">
+  <a href="<%= user_recipes_path(@user) %>"><i class="fa-solid fa-circle-arrow-left text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 rounded-full text-sm px-5 py-2.5 mr-2 mb-2"></i></a>
+  
   <h1 class="md:text-4xl text-2xl font-extrabold mx-auto"><%= @recipe.name %></h1>
   <div class="flex justify-between w-[90%]">
     <p>preparation time: <span class="font-extrabold"><%= @recipe.preparation_time %></span></p>
-    <button>Public</button>
+
+    <%= form_with url: user_recipe_path(@user, @recipe), data: { "turbo-method": :patch}, model: @recipe do |form| %>
+      <div class="relative inline-block w-[50px] mr-2 align-middle select-none transition duration-200 ease-in">
+        <%= form.label :public, 'Public' %>
+        <%= form.check_box :public, id: "public-checkbox", class: "toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer", onchange: "this.form.submit();" %>
+        <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+      </div>
+    <% end %>
+
   </div>
   <p>Cooking time: <span class="font-extrabold"><%= @recipe.cooking_time %></span></p>
   <p>Steps go here...</p>
@@ -27,5 +37,4 @@
       </div>
     <% end %>
   </div>
-
 </div>
