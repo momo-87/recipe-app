@@ -15,11 +15,7 @@ class RecipesController < ApplicationController
     @user = User.includes(:recipes).find_by(id: params[:user_id])
     @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
 
-    if @recipe.update(recipe_params)
-      redirect_to user_recipe_path(@user, @recipe)
-    else
-      redirect_to user_recipe_path(@user, @recipe)
-    end
+    redirect_to user_recipe_path(@user, @recipe)
   end
 
   def public_recipes
