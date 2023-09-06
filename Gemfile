@@ -79,5 +79,3 @@ gem 'tailwindcss-rails', '~> 2.0'
 gem 'jquery-rails'
 
 gem 'webpacker', '~> 6.0.0.beta.2'
-
-gem 'font-awesome-sass', '~> 6.4.2'

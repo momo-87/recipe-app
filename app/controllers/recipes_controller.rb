@@ -19,8 +19,8 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @users = User.all
-    @foods = Food.all
+    @users = User.includes(:recipes).all
+    @foods = Food.includes(:recipe_foods).all
     @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true)
   end
 
