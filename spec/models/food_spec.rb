@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   before :each do
-    @user = User.create(name: 'Lumbuye')
+    @user = User.create(name: 'John Doe')
     @food = Food.new(name: 'potato', measurement_unit: 'kg', price: 12, quantity: 3, user_id: @user.id)
   end
 
