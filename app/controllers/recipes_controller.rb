@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
     @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
     @recipe_foods = @recipe.recipe_foods
     @foods = Food.where(user_id: @user.id)
+    @current_user = current_user
   end
 
   def update

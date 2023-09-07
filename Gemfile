@@ -81,3 +81,5 @@ gem 'jquery-rails'
 gem 'webpacker', '~> 6.0.0.beta.2'
 
 gem 'cancancan'
+
+gem "devise", "~> 4.9"
