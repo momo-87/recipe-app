@@ -5,7 +5,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    can :read, Recipe
+    can :public_recipes, Recipe, public: true
 
     return unless user.persisted?
 
@@ -13,6 +13,6 @@ class Ability
 
     return unless user.role == 'admin'
 
-    can :manage, all
+    can :manage, :all
   end
 end

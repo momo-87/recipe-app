@@ -24,7 +24,8 @@ class RecipesController < ApplicationController
   def public_recipes
     @users = User.includes(:recipes).all
     @foods = Food.includes(:recipe_foods).all
-    @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true)
+    @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true).order(created_at: :desc)
+    @current_user = current_user
   end
 
   private
