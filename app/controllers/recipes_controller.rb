@@ -18,7 +18,11 @@ class RecipesController < ApplicationController
     @user = User.includes(:recipes).find_by(id: params[:user_id])
     @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
 
-    redirect_to user_recipe_path(@user, @recipe)
+    if @recipe.update(recipe_params)
+      redirect_to user_recipe_path(@user, @recipe)
+    else
+      redirect_to user_recipe_path(@user, @recipe), notice: 'Recipe could not be upddated'
+    end
   end
 
   def public_recipes
