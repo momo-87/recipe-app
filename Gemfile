@@ -78,4 +78,7 @@ gem 'tailwindcss-rails', '~> 2.0'
 
 gem 'jquery-rails'
 
-gem 'webpacker', '~> 6.0.0.beta.2'
+# gem 'webpacker', '~> 6.0.0.beta.2'
+
+# Devise authentication gem
+gem 'devise'

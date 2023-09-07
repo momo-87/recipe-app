@@ -15,7 +15,9 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+        <p class="notice text-green-600"><%= notice %></p>
+        <p class="alert text-red-500"><%= alert %></p> 
+        <%= yield %>
     </main>
   </body>
 </html>
