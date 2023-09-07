@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.includes(:recipes).find_by(id: params[:user_id])
     @recipes = @user.recipes.includes(:recipe_foods)
@@ -9,19 +11,25 @@ class RecipesController < ApplicationController
     @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
     @recipe_foods = @recipe.recipe_foods
     @foods = Food.where(user_id: @user.id)
+    @current_user = current_user
   end
 
   def update
     @user = User.includes(:recipes).find_by(id: params[:user_id])
     @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
 
-    redirect_to user_recipe_path(@user, @recipe)
+    if @recipe.update(recipe_params)
+      redirect_to user_recipe_path(@user, @recipe)
+    else
+      redirect_to user_recipe_path(@user, @recipe), notice: 'Recipe could not be upddated'
+    end
   end
 
   def public_recipes
     @users = User.includes(:recipes).all
     @foods = Food.includes(:recipe_foods).all
-    @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true)
+    @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true).order(created_at: :desc)
+    @current_user = current_user
   end
 
   private

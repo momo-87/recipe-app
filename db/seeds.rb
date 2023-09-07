@@ -19,9 +19,10 @@ quantity_foods = 5
 quantity_recipe_foods = 5
 users = []
 
-(1..quantity_users).each do |user_position|
-  temp_user = User.create!(name: "User Number #{user_position}")
-  # temp_user.skip_confirmation!
+
+for user_position in 1..quantity_users do
+  temp_user = User.create!(name: "User Number #{user_position}", email: "user#{user_position}@recipapp.com", password: "recipapp#{user_position}")
+  temp_user.skip_confirmation!
   users << temp_user
 end
 
