@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.includes(:recipes).find_by(id: params[:user_id])
     @recipes = @user.recipes.includes(:recipe_foods)
