@@ -3,10 +3,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get "/public_recipes", to: "recipes#public_recipes"
 
-  resources :users do
-    resources :recipes, only [:index, :show] do
-      resources :recipe_foods
+  resources :users, only: [:index, :show] do
+    resources :recipes, only: [:index, :show, :update] do
+      resources :recipe_foods, only: [:index, :show]
     end
   end
 end
