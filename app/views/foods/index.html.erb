@@ -1,4 +1,4 @@
-<div class="add-food-btn-container">
+<div class="w-full flex justify-end mx-8">
     <% if can? :destroy, Food %>
         <a href=<%= new_food_path %> class = "h-[50px] bg-slate-800 w-[300px] flex items-center justify-center text-white font-bold">Add Food</a>
     <% end %>
