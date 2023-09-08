@@ -2,7 +2,7 @@
     <div>
       <h2 class="text-xl font-extrabold"><%= recipe.name %></h2>
       <% if can? :destroy, recipe %>
-      <%= link_to 'REMOVE', recipes_path(recipe.id), id: "R#{recipe.id}", class: "font-medium text-blue-600 underline hover:no-underline", data: { "turbo-method": :delete } %>
+      <%= link_to 'REMOVE', recipe_path(recipe.id), class: "font-medium text-blue-600 underline hover:no-underline", data: { "turbo-method": :delete } %>
       <% end %>
 
     </div>

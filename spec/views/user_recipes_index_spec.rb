@@ -30,4 +30,13 @@ RSpec.describe 'Recipe', type: :system do
     expect(current_path).to eq(recipe_path(@recipe1.id))
   end
 
+  it 'redirects to recipes index page when clicking on REMOVE' do
+    visit recipes_path
+    click_link('REMOVE')
+
+    sleep(5)
+    current_path
+    expect(current_path).to eq(recipes_path)
+  end
+
 end
