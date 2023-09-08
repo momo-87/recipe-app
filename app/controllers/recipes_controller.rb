@@ -25,6 +25,19 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.includes(:recipes).find_by(id: params[:user_id])
+    @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
+
+    if @recipe.destroy
+      redirect_to user_recipes_path(@user), notice: 'Recipe successfully deleted'
+    else
+      redirect_to user_recipes_path(@user), notice: 'Recipe could not be deleted'
+    end
+  end
+
+
+
   def public_recipes
     @users = User.includes(:recipes).all
     @foods = Food.includes(:recipe_foods).all

@@ -40,7 +40,7 @@
       <div class="md:flex justify-between px-3">
         <% if can? :update, @recipe %>
           <a href="#" class="font-medium text-blue-600 underline hover:no-underline">Modify</a>
-          <a href="#" class="font-medium text-blue-600 underline hover:no-underline">Remove</a>
+          <%= link_to 'Remove', user_recipe_path(@current_user.id, @recipe.id), class: "font-medium text-blue-600 underline hover:no-underline", data: { "turbo-method": :delete } %>
         <% end %>
       </div>
     <% end %>
