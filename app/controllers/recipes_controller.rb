@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.includes(:recipe_foods).where(user_id: current_user.id).find(params[:id])
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
@@ -21,7 +21,7 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.includes(:recipe_foods).where(user_id: current_user.id).find(params[:id])
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
 
     if @recipe.destroy
       redirect_to recipes_path, notice: 'Recipe successfully deleted'
@@ -30,13 +30,17 @@ class RecipesController < ApplicationController
     end
   end
 
-
-
   def public_recipes
     @users = User.includes(:recipes).all
     @foods = Food.includes(:recipe_foods).all
     @public_recipes = Recipe.includes(:user, :recipe_foods).where(public: true).order(created_at: :desc)
     @current_user = current_user
+  end
+
+  def remove_food_from_recipe
+    @recipe_food = RecipeFood.includes(:food).find_by(recipe_id: params[:id], food_id: params[:food_id])
+    @recipe_food.destroy
+    redirect_to recipe_path(params[:id])
   end
 
   private
