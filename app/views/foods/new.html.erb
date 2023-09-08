@@ -1,0 +1,15 @@
+<div class="w-full flex flex-col justify-center items-center">
+    <h2>Add food</h2>
+    <%= form_with class:'flex flex-col gap-2 w-[90vw]', model: @food, url: { action: "create" }, method: :post do |f| %>
+        <%= f.text_field :name, placeholder: 'Food name', class: 'w-full h-[50px] border border-black' %>
+        <%= f.text_field :measurement_unit, placeholder: 'measurement unit', class: 'w-full h-[50px] border border-black' %>
+        <%= f.number_field :price, placeholder: 'Food price', class: 'w-full h-[50px] border border-black' %>
+        <%= f.number_field :quantity, placeholder: 'Food quantity', class: 'w-full h-[50px] border border-black' %>
+        <%= f.submit 'ADD FOOD', class: 'w-full' %>
+        <% if flash[:notice] %>
+            <div class="notice">
+                <%= flash[:notice] %>
+            </div>
+        <% end %>
+    <% end %>
+</div>

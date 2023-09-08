@@ -1,0 +1,21 @@
+<div class="w-full flex justify-end mx-8">
+    <% if can? :destroy, Food %>
+        <a href=<%= new_food_path %> class = "h-[50px] bg-slate-800 w-[300px] flex items-center justify-center text-white font-bold">Add Food</a>
+    <% end %>
+</div>
+
+<table class="table-auto">
+    <thead>
+        <tr>
+            <th>Food</th>
+            <th>Measurement Unit</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @foods.each do |food| %>
+            <%= render partial: 'food', locals: {food: food}%>
+        <% end %>
+    </tbody>
+</table>
