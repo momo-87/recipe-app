@@ -3,8 +3,6 @@
     <td><%= food.measurement_unit%></td>
     <td><%= food.price%></td>
     <td>
-        <% if can? :destroy, Food %>
-            <%=  button_to 'Delete', delete_food_path(food.id), method: :delete %>
-        <% end %>
+       <%=  button_to 'Delete', delete_food_path(food.id), method: :delete %>
     </td>
 </tr>
