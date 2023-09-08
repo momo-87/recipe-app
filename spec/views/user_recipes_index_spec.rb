@@ -4,11 +4,9 @@ RSpec.describe 'Recipe', type: :system do
   # Create some test users and their associated data
   before do
     @user1 = User.create!(name: 'Christian Momo', email: 'mm@recipapp.com', password: '123456')
-    @user2 = User.create!(name: 'Mael Momo', email: 'ma@recipapp.com', password: '123457')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
     @recipe1 = @user1.recipes.create!(name: 'recipe 1', description: 'recipe 1 description', cooking_time: 10, preparation_time: 5)
-    @recipe2 = @user2.recipes.create!(name: 'recipe 2', description: 'recipe 2 description', cooking_time: 5, preparation_time: 2)
 
     food = @user1.foods.create!(name: 'food 1', measurement_unit: 'kg', price: 10, quantity: 5)
     recipe_food = RecipeFood.create!(quantity: 5, food: food, recipe: @recipe1)
