@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   get '/public_recipes', to: 'recipes#public_recipes'
   delete '/recipes/:id/:food_id', to: 'recipes#remove_food_from_recipe', as: 'recipe_food'
+
   resources :users, only: %i[index show]
-  resources :recipes, only: %i[index show update destroy]
-  resources :recipe_foods, only: %i[index show]
+  resources :recipes, only: %i[index show update destroy] do
+    resources :recipe_foods, only: [:index, :show, :new, :create]
+  end
 end
