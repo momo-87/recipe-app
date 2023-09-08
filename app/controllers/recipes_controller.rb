@@ -2,37 +2,31 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @user = User.includes(:recipes).find_by(id: params[:user_id])
-    @recipes = @user.recipes.includes(:recipe_foods)
+    @recipes = Recipe.includes(:recipe_foods).where(user_id: current_user.id)
   end
 
   def show
-    @user = User.includes(:recipes).find_by(id: params[:user_id])
-    @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @recipe_foods = @recipe.recipe_foods
-    @foods = Food.where(user_id: @user.id)
-    @current_user = current_user
   end
 
   def update
-    @user = User.includes(:recipes).find_by(id: params[:user_id])
-    @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
-
+    @recipe = Recipe.includes(:recipe_foods).where(user_id: current_user.id).find(params[:id])
+    
     if @recipe.update(recipe_params)
-      redirect_to user_recipe_path(@user, @recipe)
+      redirect_to recipe_path(@recipe)
     else
-      redirect_to user_recipe_path(@user, @recipe), notice: 'Recipe could not be upddated'
+      redirect_to recipe_path(@recipe), notice: 'Recipe could not be upddated'
     end
   end
 
   def destroy
-    @user = User.includes(:recipes).find_by(id: params[:user_id])
-    @recipe = @user.recipes.includes(:recipe_foods).find(params[:id])
+    @recipe = Recipe.includes(:recipe_foods).where(user_id: current_user.id).find(params[:id])
 
     if @recipe.destroy
-      redirect_to user_recipes_path(@user), notice: 'Recipe successfully deleted'
+      redirect_to recipes_path, notice: 'Recipe successfully deleted'
     else
-      redirect_to user_recipes_path(@user), notice: 'Recipe could not be deleted'
+      redirect_to recipes_path, notice: 'Recipe could not be deleted'
     end
   end
 
