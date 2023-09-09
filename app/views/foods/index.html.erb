@@ -1,22 +1,26 @@
-<%= render 'partials/header' %>
-<div class="w-full flex justify-end mx-8">
-    <% if can? :destroy, Food %>
-        <a href=<%= new_food_path %> id="add-food-link" class = "h-[50px] bg-slate-800 w-[300px] flex items-center justify-center text-white font-bold">Add Food</a>
-    <% end %>
+<div class="md:w-[70%] mx-auto">
+    <%= render partial: 'shared/header' %>
+    <div class="w-full flex justify-end">
+        <% if can? :destroy, Food %>
+            <a href=<%= new_food_path %> id="add-food-link" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Add Food</a>
+        <% end %>
+    </div>
+
+    <div class="grid grid-cols-4 grid-rows-1 grid-flow-row border-2 border-black mt-5">
+        <div class="font-extrabold bg-gray-400 border-r-2 border-black">Food</div>
+        <div class="font-extrabold bg-gray-400 border-r-2 border-black">Measurement unit</div>
+        <div class="font-extrabold bg-gray-400 border-r-2 border-black">Unit price</div>
+        <div class="font-extrabold bg-gray-400">Actions</div>
+        <% @foods.each do |food| %>
+            <div class="border-r-2 border-black"><%= food.name %></div>
+            <div class="border-r-2 border-black"><%= food.measurement_unit %></div>
+            <div class="border-r-2 border-black"><%= food.price %></div>
+            <div class="border-r-2 border-black">
+                <% if can? :destroy, Food %>
+                    <%=  button_to 'Delete', delete_food_path(food.id), method: :delete %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
 </div>
 
-<table class="table-auto">
-    <thead>
-        <tr>
-            <th>Food</th>
-            <th>Measurement Unit</th>
-            <th>Price</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @foods.each do |food| %>
-            <%= render partial: 'food', locals: {food: food}%>
-        <% end %>
-    </tbody>
-</table>
