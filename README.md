@@ -8,7 +8,7 @@
 
 | Project Veiw Screenshots                                                                                              |
 | --------------------------------------------------------------------------------------------------------------------- |
-| <div align="center"><img src="./app/assets/images/recipe-app.png" alt="screenshot" width="auto" height="auto"/></div> |
+| <div align="center">![recipeapp](https://github.com/momo-87/recipe-app/assets/114305384/566fe601-ab8e-48f3-aa8e-1ce835b68d3f)</div> |
 
 # 📗 Table of Contents
 
