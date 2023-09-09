@@ -21,7 +21,7 @@ RSpec.describe 'Recipe', type: :system do
 
   it 'should redirect to add new food page' do
     visit recipes_path
-    find("#add-food-link").click
+    find('#add-food-link').click
 
     sleep(5)
     current_path
