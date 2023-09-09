@@ -87,4 +87,4 @@ gem 'cancancan'
 
 gem 'devise', '~> 4.9'
 
-gem "webpacker", "~> 5.4"
+gem 'webpacker', '~> 5.4'
