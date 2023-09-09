@@ -1,3 +1,4 @@
+<%= render 'partials/header' %>
 <div class="w-full flex flex-col justify-center items-center">
     <h2>Add food</h2>
     <%= form_with class:'flex flex-col gap-2 w-[90vw]', model: @food, url: { action: "create" }, method: :post do |f| %>
