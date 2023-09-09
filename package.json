@@ -1,0 +1,34 @@
+{
+  "name": "app",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^6.0.0-rc.6",
+    "jquery": "^3.7.1",
+    "webpack": "5.53.0"
+  },
+  "version": "0.1.0",
+  "babel": {
+    "presets": [
+      "./node_modules/@rails/webpacker/package/babel/preset.js"
+    ]
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "lint": "npx stylelint **/*.{css,scss} --fix",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@webpack-cli/serve": "^2.0.5",
+    "babel-plugin-macros": "^3.1.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

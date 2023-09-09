@@ -1,0 +1,24 @@
+      <header class="sticky top-0 text-white bg-slate-600">
+        <nav class="w-[100vw] h-[60px] flex justify-between items-center">
+          <h1 class="text-lg font-bold">
+            <%= link_to "recipe app", foods_path(current_user.id) %>
+          </h1>
+          <ul class="flex items-center h-full gap-7">
+            <li>
+              <%= link_to "recipes", recipes_path(current_user.id) %>
+            </li>
+            <li>
+              <%= link_to "foods", foods_path %>
+            </li>
+            <li>
+              <%= link_to "shopping list", shopping_list_path %>
+            </li>
+            <li>
+              <%= link_to "public recipes", public_recipes_path(current_user.id) %>
+            </li>
+            <li>
+              <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete } %>
+            </li>
+          </ul>          
+        </nav>
+      </header>
