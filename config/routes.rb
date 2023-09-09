@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'users#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  get '/public_recipes', to: 'recipes#public_recipes'
+    # Defines the root path route ("/")
+    # root "articles#index"
+    get '/public_recipes', to: 'recipes#public_recipes'
+    delete '/recipes/:id/:food_id', to: 'recipes#remove_food_from_recipe', as: 'recipe_food'
 
-  resources :foods, only: [:index, :new, :create]
-
-  resources :users, only: %i[index show] do
-    resources :recipes, only: %i[index show update] do
-      resources :recipe_foods, only: %i[index show]
+    resources :recipes, only: %i[index show update destroy] do
+      resources :recipe_foods, only: [:index, :show, :new, :create]
     end
-  end
-  delete 'foods/:id', to: 'foods#delete', as: 'delete_food'
+
+    resources :foods, only: [:index, :new, :create]
+
+    delete 'foods/:id', to: 'foods#delete', as: 'delete_food'
 end
