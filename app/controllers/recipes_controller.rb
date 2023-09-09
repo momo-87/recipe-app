@@ -5,9 +5,27 @@ class RecipesController < ApplicationController
     @recipes = Recipe.includes(:recipe_foods).where(user_id: current_user.id)
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
   def show
     @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @recipe_foods = @recipe.recipe_foods
+  end
+
+  def create
+    name = recipe_params[:name]
+    preparation_time = recipe_params[:preparation_time]
+    cooking_time = recipe_params[:cooking_time]
+    description = recipe_params[:description]
+    recipe = Recipe.new(user_id: current_user.id, name:, preparation_time:, description:, cooking_time:)
+
+    if recipe.save
+      redirect_to recipes_path
+    else
+      render :new
+    end
   end
 
   def update
@@ -46,6 +64,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

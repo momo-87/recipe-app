@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     delete '/recipes/:id/:food_id', to: 'recipes#remove_food_from_recipe', as: 'recipe_food'
 
 
-    resources :recipes, only: %i[index show update destroy] do
+    resources :recipes, only: [:index, :new, :show, :create, :update, :destroy] do
       resources :recipe_foods, only: [:index, :show, :new, :create]
     end
 
