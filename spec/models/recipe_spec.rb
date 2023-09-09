@@ -2,7 +2,9 @@ require_relative '../rails_helper'
 
 RSpec.describe Recipe, type: :model do
   let(:user) { User.create!(name: 'Christian Momo', email: 'mm@recipapp.com', password: '123456') }
-  let(:recipe) { user.recipes.create!(name: 'recipe 1', description: 'recipe description', cooking_time: 10, preparation_time: 5) }
+  let(:recipe) do
+    user.recipes.create!(name: 'recipe 1', description: 'recipe description', cooking_time: 10, preparation_time: 5)
+  end
 
   describe 'validation' do
     it 'requires name to be present' do
