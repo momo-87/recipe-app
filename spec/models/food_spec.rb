@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Food, type: :model do
   before :each do
-    @user = User.create(name: 'John Doe')
-    @food = Food.new(name: 'potato', measurement_unit: 'kg', price: 12, quantity: 3, user_id: @user.id)
+    @user = User.create!(name: 'Christian Momo', email: 'mm@recipapp.com', password: '123456') 
+    @food = Food.create!(name: 'potato', measurement_unit: 'kg', price: 12, quantity: 3, user_id: @user.id)
   end
 
   it 'is valid with valid attributes' do
