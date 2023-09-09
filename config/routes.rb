@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   get '/shopping_list', to: 'foods#shopping_list', as: 'shopping_list'
 
-  root 'users#index'
-    # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-    # Defines the root path route ("/")
-    # root "articles#index"
+  # Defines the root path route ("/")
+  # root "articles#index"
     get '/public_recipes', to: 'recipes#public_recipes'
     delete '/recipes/:id/:food_id', to: 'recipes#remove_food_from_recipe', as: 'recipe_food'
 
