@@ -7,6 +7,8 @@ class FoodsController < ApplicationController
     @food = Food.new
   end
 
+  def shopping_list; end
+
   def create
     name = food_params[:name]
     measurement_unit = food_params[:measurement_unit]
