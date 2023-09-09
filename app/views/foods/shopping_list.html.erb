@@ -1,0 +1,23 @@
+<%= render 'partials/header' %>
+<h1>Shopping list</h1>
+
+<h2>Amount of food to buy: <%= @shopping_list.length %></h2>
+<h2>Total value of food needed: <%= @total_price %></h2>
+<table>
+    <th>
+        <tr>
+            <th>Food</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </th>
+    <tbody>
+        <% @shopping_list.each do |shopping_list_item| %>
+        <tr>
+            <td><%= shopping_list_item[:food] %></td>
+            <td><%= "#{shopping_list_item[:quantity]} #{shopping_list_item[:unit]}" %></td>
+            <td><%= "#{shopping_list_item[:unit_price] * shopping_list_item[:quantity]} $" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
