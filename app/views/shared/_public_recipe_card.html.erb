@@ -1,4 +1,4 @@
-<div class="border-2 border-black flex p-[3%] justify-between md:w-[60%] mx-auto relative min-h-[140px]">
+<div class="border-2 border-black flex p-[3%] justify-between w-[100%] mx-auto relative min-h-[140px]">
   <div>
     <h2 class="font-extrabold"><%= public_recipe.name %></h2>
     <p>by<br> <span><%= @users.find_by(id: public_recipe.user_id).name %></span></p>
