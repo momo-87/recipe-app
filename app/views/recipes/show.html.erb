@@ -3,7 +3,7 @@
 
 <div class="w-full flex flex-col gap-5 pl-[3%] pr-[3%] md:w-[60%] mx-auto pt-5">
   <div class="flex justify-between w-[90%]">
-    <a href="<%= request.referer %>"><i class="fa-solid fa-left-long md:text-4xl text-2xl"></i></a>
+    <a href="<%= recipes_path %>"><i class="fa-solid fa-left-long md:text-4xl text-2xl"></i></a>
     <h1 class="md:text-4xl text-2xl font-extrabold mx-auto"><%= @recipe.name %></h1>
   </div>  
   <div class="flex justify-between w-[90%]">
@@ -25,7 +25,7 @@
   <% if can? :update, @recipe %>
     <div class="flex justify-between">
       <button class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
-        <%= link_to 'Generate shopping list', shopping_list_path %>
+        <%= link_to 'Generate shopping list', recipe_shopping_list_path(params[:id]) %>
       </button>
       <%= link_to 'Add Food', new_recipe_recipe_food_path(@recipe), class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" %>
     </div>

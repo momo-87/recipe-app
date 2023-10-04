@@ -1,9 +1,9 @@
 <%= render partial: 'shared/header' %>
 <div class="w-full md:w-[50%] mx-auto gap-5">
-  <a href="<%= request.referer %>"><i class="fa-solid fa-left-long md:text-4xl text-2xl"></i></a>
+  <a href="<%= recipe_path(params[:recipe_id]) %>"><i class="fa-solid fa-left-long md:text-4xl text-2xl"></i></a>
   <div class="mx-auto md:flex md:justify-center text-center">
-    <%= form_with model: [@recipe, @recipe_food], url: recipe_recipe_foods_path(@recipe), method: :post do |form| %>
-      <%= form.collection_select :food_id, @foods, :id, :name, prompt: 'Select a food' %>
+    <%= form_with model: [@recipe, @recipe_food], url: recipe_recipe_foods_path(@recipe), class: "border w-full", method: :post do |form| %>
+      <%= form.collection_select :food_id, @foods, :id, :name, prompt: 'Select a food', class: "border border-red-500" %>
       <%= form.number_field :quantity, placeholder: 'Enter quantity', class: "mt-5" %>
       <%= form.submit 'Add Food', class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 mt-5" %>
   <% end %>
