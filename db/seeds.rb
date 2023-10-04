@@ -29,7 +29,7 @@ end
 (0..(quantity_users - 1)).each do |user_position|
   (0..Random.rand(quantity_recipes - 1)).each do |recipe_position|
     temp_recipe = Recipe.create!(user: users[user_position], name: "Recipe #{recipe_position + 1}",
-                                 preparation_time: "#{Faker::Number.within(range: 10..60)} minutes", cooking_time: "#{Faker::Number.within(range: 10..60)} minutes", description: Faker::Lorem.sentences(number: Random.rand(2..11)).join(' '))
+                                 preparation_time: Faker::Number.within(range: 10..60), cooking_time: Faker::Number.within(range: 10..60), description: Faker::Lorem.sentences(number: Random.rand(2..11)).join(' '))
     (0..Random.rand(quantity_recipe_foods - 1)).each do |_|
       temp_food = Food.create!(user: users[user_position], name: "Food #{rand(1..quantity_foods)}",
                                measurement_unit: 'unit', price: Faker::Number.between(from: 1, to: 100), quantity: Faker::Number.between(from: 1, to: 20))
