@@ -56,6 +56,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'better_errors'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -75,6 +76,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'dotenv-rails'
 end
 
 group :production do
