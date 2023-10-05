@@ -1,21 +1,21 @@
 <%= render partial: "shared/header" %>
 <div class="flex flex-col w-full items-center justify-center">
-  <h2 class="md:text-4xl font-extrabold text-color-text text-xl">Welcome to RecipeApp.</h2>
+  <h2 class="md:text-4xl font-extrabold text-color-text text-xl">Welcome to Recipe@p.</h2>
   <div>
     <!-- <%= render "devise/shared/links" %> -->
   </div>
   <div class="w-full mt-5">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "w-full"}) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="text-center text-color-red"><%= render "devise/shared/error_messages", resource: resource %></div>
       
       <div class="field w-4/5 mx-auto md:w-1/3 mt-5">
-        <%= f.label :name %><br />
-        <%= f.text_field :name, class: "w-full rounded-lg" %>
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: "w-full rounded-lg" %>
       </div>
 
       <div class="field w-4/5 mx-auto md:w-1/3 mt-5">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full rounded-lg" %>
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: "email", class: "w-full rounded-lg" %>
       </div>
       
       <div class="field w-4/5 mx-auto md:w-1/3 mt-5">
