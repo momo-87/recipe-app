@@ -16,8 +16,8 @@ class RecipesController < ApplicationController
 
   def create
     name = recipe_params[:name]
-    preparation_time = recipe_params[:preparation_time]
-    cooking_time = recipe_params[:cooking_time]
+    preparation_time = recipe_params[:preparation_time] || 0
+    cooking_time = recipe_params[:cooking_time] || 0
     description = recipe_params[:description]
     recipe = Recipe.new(user_id: current_user.id, name:, preparation_time:, description:, cooking_time:)
 

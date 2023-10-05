@@ -7,7 +7,7 @@
     <h1 class="md:text-4xl text-2xl font-extrabold mx-auto"><%= @recipe.name %></h1>
   </div>  
   <div class="flex justify-between w-[90%]">
-    <p>Preparation time: <span class="font-extrabold"><%= @recipe.preparation_time %></span></p>
+    <p>Preparation time: <span class="font-extrabold"><%= @recipe.preparation_time %> hour(s)</span></p>
     <% if can? :update, @recipe %>
       <%= form_with url: recipe_path(@recipe), data: { "turbo-method": :patch}, model: @recipe do |form| %>
         <div class="relative inline-block w-[50px] mr-2 align-middle select-none transition duration-200 ease-in">
@@ -19,7 +19,7 @@
     <% end %>
 
   </div>
-  <p>Cooking time: <span class="font-extrabold"><%= @recipe.cooking_time %></span></p>
+  <p>Cooking time: <span class="font-extrabold"><%= @recipe.cooking_time %> hour(s)</span></p>
   <p>Steps go here...</p>
 
   <% if can? :update, @recipe %>
