@@ -4,6 +4,7 @@
   <% @public_recipes.each do |public_recipe| %>
    <%= render partial: 'shared/public_recipe_card', locals: { public_recipe: public_recipe } %>
   <% end %>
-
-  <p class="mx-auto">Don't have an account? <span class="font-bold hover:underline"><%= link_to "Sign up", new_user_registration_path %></span></p>
+  <% if !current_user %>
+    <p class="mx-auto">Don't have an account? <span class="font-bold hover:underline"><%= link_to "Sign up", new_user_registration_path %></span></p>
+  <% end %>
 </div>

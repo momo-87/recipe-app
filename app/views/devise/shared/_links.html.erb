@@ -4,7 +4,7 @@
   <% end %>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-    <% if !current_page?(new_user_session_path) %>
+    <% if !current_page?(new_user_session_path) && !alert %>
       <span>Don't have an accouts? <span class="font-bold hover:underline"><%= link_to "Sign up", new_registration_path(resource_name) %></span></span><br />
     <% end %>
   <% end %>
