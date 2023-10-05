@@ -54,6 +54,8 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'better_errors'
 end
 
 group :development do
@@ -75,6 +77,11 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+  # Use pg as the production database for Active Record
+  gem 'rails_12factor'
+end
+
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'tailwindcss-rails', '~> 2.0'
@@ -86,3 +93,5 @@ gem 'cancancan'
 gem 'devise', '~> 4.9'
 
 gem 'webpacker', '~> 5.4'
+
+gem 'figaro'
