@@ -2,7 +2,8 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @recipes = Recipe.includes(:recipe_foods).where(user_id: current_user.id)
+    @recipes = Recipe.includes(:recipe_foods).where(user_id: current_user.id) if current_user
+    @recipes = Recipe.includes(:recipe_foods).where(public: true)
   end
 
   def new
