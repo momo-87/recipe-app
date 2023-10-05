@@ -41,8 +41,18 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  ### DEVISE TUTORIAL ###
   # Specify default URL
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = {
+    host: 'localhost:3000'
+  }
+  config.action_mailer.delivery_method = :smtp
+  #SMTP settings for mailcatcher gem
+  config.action_mailer.smtp_settings = {
+    address: '127.0.0.1',
+    port: 1025
+  }
+  #####
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
