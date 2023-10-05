@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.includes(:recipe_foods).where(user_id: current_user.id) if current_user
-    @recipes = Recipe.includes(:recipe_foods).where(public: true)
+    @recipes = Recipe.includes(:recipe_foods).where(public: true) if !current_user
   end
 
   def new
