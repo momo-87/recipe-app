@@ -14,9 +14,9 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= notice if notice %>
-      <%= alert if alert %>
+    <main class="container mx-auto mt-28 px-5 flex flex-col">
+      <div class="text-color-green font-bold text-center"><%= notice if notice %></div>
+      <div class="text-color-red font-bold text-center pb-5"><%= alert if alert %></div>
       <%= yield %>
     </main>
 
