@@ -5,6 +5,7 @@ set -o errexit
 export RUBY_VERSION=3.2.2
 export BUNDLE_GEMFILE=$RENDER_SRC_ROOT/Gemfile
 set_ruby_env $(fetch_or_build "$RUBY_VERSION")
+gem install bundler
 gem update --system
 bundle install
 bundle exec rake assets:precompile
