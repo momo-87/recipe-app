@@ -3,6 +3,7 @@
 set -o errexit
 
 export RUBY_VERSION=3.2.2
+export BUNDLE_GEMFILE=$RENDER_SRC_ROOT/Gemfile
 gem install bundler
 gem update --system
 bundle install
