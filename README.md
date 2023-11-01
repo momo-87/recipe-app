@@ -6,7 +6,7 @@
 
 > # Blog App
 
-| Project Veiw Screenshots                                                                                              |
+| Project View Screenshots                                                                                              |
 | --------------------------------------------------------------------------------------------------------------------- |
 | <div align="center">![recipeapp](https://github.com/momo-87/recipe-app/assets/114305384/566fe601-ab8e-48f3-aa8e-1ce835b68d3f)</div> |
 
@@ -33,7 +33,7 @@
 
 # 📖 [Recipe App] <a name="about-project"></a>
 
-**[Recipe App]** The Recipe app keeps track of all your recipes, and ingredients. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
+> The Recipe app keeps track of all your recipes, and ingredients. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
 
 ## 🛠 Built With <a name="built-with"></a>
 
