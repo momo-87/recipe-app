@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    # Used 'includes' method to minimize N+1 Queries:
     @recipes = Recipe.includes(:recipe_foods).where(user_id: current_user.id) if current_user
     @recipes = Recipe.includes(:recipe_foods).where(public: true) unless current_user
   end
