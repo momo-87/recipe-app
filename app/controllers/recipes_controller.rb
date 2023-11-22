@@ -64,7 +64,7 @@ class RecipesController < ApplicationController
   end
 
   private
-
+  # Used private method to enforce stringent security measures for browser request parameters
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
