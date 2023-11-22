@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  # Load and authorize the appropriate resource for the controller
   load_and_authorize_resource
 
   def index
