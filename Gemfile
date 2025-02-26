@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.7'
+gem 'rails', '~> 7.1.3.2'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -54,7 +54,6 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'better_errors'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
@@ -100,3 +99,5 @@ gem 'figaro'
 gem 'sentry-ruby', '~> 5.11'
 
 gem 'sentry-rails', '~> 5.11'
+
+gem 'dotenv-rails'
