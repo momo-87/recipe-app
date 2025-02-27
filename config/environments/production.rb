@@ -90,4 +90,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Action Mailer Configuration for Gmail
+  config.action_mailer.default_url_options = { host: 'recipapp.christianmomo.dev', protocol: 'https'  }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:         "smtp.gmail.com",
+    port:            587,
+    domain:          "christianmomo.dev",
+    user_name:       Rails.application.credentials.dig(:smtp, :user_name),
+    password:        Rails.application.credentials.dig(:smtp, :password),
+    authentication:  "plain",
+    enable_starttls: true,
+    open_timeout:    5,
+    read_timeout:    5 }
+
 end
