@@ -42,3 +42,4 @@ yarn-debug.log*
 .yarn-integrity
 /instructions.txt
 .env
+/config/master.key
