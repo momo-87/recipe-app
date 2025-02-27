@@ -37,22 +37,22 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
   ### DEVISE TUTORIAL ###
   # Specify default URL
-  config.action_mailer.default_url_options = {
-    host: 'localhost:3000'
-  }
-  config.action_mailer.delivery_method = :smtp
-  #SMTP settings for mailcatcher gem
-  config.action_mailer.smtp_settings = {
-    address: '127.0.0.1',
-    port: 1025
-  }
-  #####
+  # config.action_mailer.default_url_options = {
+  #   host: 'localhost:3000'
+  # }
+  # config.action_mailer.delivery_method = :smtp
+  # #SMTP settings for mailcatcher gem
+  # config.action_mailer.smtp_settings = {
+  #   address: '127.0.0.1',
+  #   port: 1025
+  # }
+  # #####
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -80,4 +80,18 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  # 
+  # Action Mailer Configuration for Gmail
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:         "smtp.gmail.com",
+    port:            587,
+    domain:          "christianmomo.dev",
+    user_name:       Rails.application.credentials.dig(:smtp, :user_name),
+    password:        Rails.application.credentials.dig(:smtp, :password),
+    authentication:  "plain",
+    enable_starttls: true,
+    open_timeout:    5,
+    read_timeout:    5 }
 end
