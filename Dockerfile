@@ -46,8 +46,10 @@ RUN bundle config set --local deployment 'true' && \
 # COPY package.json package-lock.json ./
 # RUN npm install
 
-COPY package.json yarn.lock ./
-RUN yarn install --check-files
+# Install Node.js and Yarn
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g yarn
 
 # Copy application code
 COPY . .
