@@ -54,6 +54,9 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 # Copy application code
 COPY . .
 
+# Install Webpack
+RUN yarn add webpack webpack-cli
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
