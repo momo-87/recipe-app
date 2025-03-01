@@ -46,6 +46,9 @@ RUN bundle config set --local deployment 'true' && \
 # COPY package.json package-lock.json ./
 # RUN npm install
 
+COPY package.json yarn.lock ./
+RUN yarn install --check-files
+
 # Copy application code
 COPY . .
 
