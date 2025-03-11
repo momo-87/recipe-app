@@ -28,7 +28,7 @@ proxy:
   ssl: true
   host: recipapp.christianmomo.dev
   # Proxy connects to your container on port 80 by default.
-  app_port: 3000
+  app_port: 8000
   healthcheck:
     path: /up
     interval: 7
@@ -124,6 +124,6 @@ accessories:
   redis:
     image: redis:7.4
     host: 54.37.19.169
-    port: 6379
+    port: 6380
     directories:
       - data:/data
