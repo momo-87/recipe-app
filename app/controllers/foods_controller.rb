@@ -19,7 +19,7 @@ class FoodsController < ApplicationController
         unit_price: food.price
       }
       @total_price += shopping_list_item[:quantity] * shopping_list_item[:unit_price]
-      @shopping_list << shopping_list_item if (shopping_list_item[:quantity]).positive?
+      @shopping_list << shopping_list_item if shopping_list_item[:quantity].positive?
     end
   end
 
