@@ -1,0 +1,2 @@
+CREATE DATABASE recipapp_production;
+CREATE DATABASE recipapp_production_cable;
