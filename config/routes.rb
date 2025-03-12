@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/up', to: 'health#up' # Health check endpoint
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: 'recipes#public_recipes'
