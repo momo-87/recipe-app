@@ -1,15 +1,17 @@
 class CreateFoods < ActiveRecord::Migration[7.0]
   def change
-    create_table :foods do |t|
-      t.string :name
-      t.string :measurement_unit
-      t.decimal :price
-      t.decimal :quantity
-      t.integer :user_id
+    unless table_exists?(:foods)
+      create_table :foods do |t|
+        t.string :name
+        t.string :measurement_unit
+        t.decimal :price
+        t.decimal :quantity
+        t.integer :user_id
 
-      t.timestamps
+        t.timestamps
+      end
+      add_foreign_key :foods, :users, column: :user_id
+      add_index :foods, :user_id
     end
-    add_foreign_key :foods, :users, column: :user_id
-    add_index :foods, :user_id
   end
 end
